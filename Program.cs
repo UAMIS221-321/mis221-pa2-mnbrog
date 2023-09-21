@@ -92,7 +92,6 @@ internal class Program
                 Console.WriteLine("Menu or Reset? M / R");
             string input2 = Console.ReadLine().ToUpper();
                 if (input2 =="M"){
-                    Menu();
                     break;
                 }
                 if (input2 =="R"){
@@ -105,7 +104,7 @@ internal class Program
             }
 
         }
-    static void ParkFees(doub){
+    static void ParkFees(){
             double baseFee = 10.0;
             double rvFee = 20.0;
             double discountPercentage = 0.2;
@@ -114,8 +113,9 @@ internal class Program
             Console.WriteLine("Welcome to the Fee Payment System!");
 
             // Prompt for RV status
+            bool isRV=false;
             Console.Write("Are you driving an RV? (Y/N): ");
-            bool isRV = Console.ReadLine().ToUpper() == "Y";
+            isRV = Console.ReadLine().ToUpper() == "Y";
 
             // Prompt for the number of attendees
             Console.Write("Enter the number of attendees: ");
@@ -126,7 +126,16 @@ internal class Program
                 return;
             }
 
-            double totalFee = isRV ? rvFee : baseFee;
+            double totalFee = 0;
+            if (isRV)
+            {
+                totalFee += rvFee;
+            }
+            else
+            {
+                totalFee += baseFee;
+            }
+
             double childDiscount = 0.0;
 
             // Calculate child discount
@@ -143,7 +152,7 @@ internal class Program
                 int numberOfChildAttendees;
                 if (int.TryParse(Console.ReadLine(), out numberOfChildAttendees) && numberOfChildAttendees >= 0 && numberOfChildAttendees <= numberOfAttendees)
                 {
-                    childDiscount = (numberOfChildAttendees * baseFee * (1 - discountPercentage));
+                    childDiscount = (numberOfChildAttendees * baseFee * discountPercentage);
                 }
                 else
                 {
@@ -152,25 +161,27 @@ internal class Program
                 }
             }
 
-            totalFee += (numberOfAttendees - childDiscount) * baseFee;
+            totalFee += (numberOfAttendees * baseFee) - childDiscount;
             double tax = totalFee * taxRate;
-
-            Console.WriteLine($"Total fee: ${totalFee + tax}");
+            totalFee+=tax;
+            Console.WriteLine($"Total fee: ${totalFee}");
             Console.Write("Enter the amount paid: $");
             double amountPaid;
 
             if (double.TryParse(Console.ReadLine(), out amountPaid))
             {
-                if (amountPaid < totalFee + tax)
+                while (amountPaid < totalFee)
                 {
+                    totalFee-=amountPaid;
+                    amountPaid=0;
                     Console.WriteLine("Error: The amount paid is less than the total fee.");
+                    Console.WriteLine($"Remaining fee: ${totalFee}");
+                    Console.Write("Enter the amount paid: $");
+                    amountPaid=Convert.ToDouble(Console.ReadLine());
                 }
-                else
-                {
-                    double change = amountPaid - (totalFee + tax);
+                    double change = amountPaid - totalFee;
                     Console.WriteLine($"Change: ${change}");
                     Console.WriteLine("Thank you for your payment!");
-                }
             }
             else
             {
