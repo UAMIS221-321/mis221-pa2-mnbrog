@@ -1,0 +1,14 @@
+C:\Users\Michael Brogan\PA2\mis221-pa2-mnbrog\bin\Debug\net7.0\mis221-pa2-mnbrog.exe
+C:\Users\Michael Brogan\PA2\mis221-pa2-mnbrog\bin\Debug\net7.0\mis221-pa2-mnbrog.deps.json
+C:\Users\Michael Brogan\PA2\mis221-pa2-mnbrog\bin\Debug\net7.0\mis221-pa2-mnbrog.runtimeconfig.json
+C:\Users\Michael Brogan\PA2\mis221-pa2-mnbrog\bin\Debug\net7.0\mis221-pa2-mnbrog.dll
+C:\Users\Michael Brogan\PA2\mis221-pa2-mnbrog\bin\Debug\net7.0\mis221-pa2-mnbrog.pdb
+C:\Users\Michael Brogan\PA2\mis221-pa2-mnbrog\obj\Debug\net7.0\mis221-pa2-mnbrog.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Michael Brogan\PA2\mis221-pa2-mnbrog\obj\Debug\net7.0\mis221-pa2-mnbrog.AssemblyInfoInputs.cache
+C:\Users\Michael Brogan\PA2\mis221-pa2-mnbrog\obj\Debug\net7.0\mis221-pa2-mnbrog.AssemblyInfo.cs
+C:\Users\Michael Brogan\PA2\mis221-pa2-mnbrog\obj\Debug\net7.0\mis221-pa2-mnbrog.csproj.CoreCompileInputs.cache
+C:\Users\Michael Brogan\PA2\mis221-pa2-mnbrog\obj\Debug\net7.0\mis221-pa2-mnbrog.dll
+C:\Users\Michael Brogan\PA2\mis221-pa2-mnbrog\obj\Debug\net7.0\refint\mis221-pa2-mnbrog.dll
+C:\Users\Michael Brogan\PA2\mis221-pa2-mnbrog\obj\Debug\net7.0\mis221-pa2-mnbrog.pdb
+C:\Users\Michael Brogan\PA2\mis221-pa2-mnbrog\obj\Debug\net7.0\mis221-pa2-mnbrog.genruntimeconfig.cache
+C:\Users\Michael Brogan\PA2\mis221-pa2-mnbrog\obj\Debug\net7.0\ref\mis221-pa2-mnbrog.dll

@@ -1,0 +1,23 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v7.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v7.0": {
+      "mis221-pa2-mnbrog/1.0.0": {
+        "runtime": {
+          "mis221-pa2-mnbrog.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "mis221-pa2-mnbrog/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}
