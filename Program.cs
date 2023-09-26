@@ -1,4 +1,6 @@
 ﻿// See https://aka.ms/new-console-template for more information
+using System.Security.Cryptography.X509Certificates;
+
 internal class Program
 {
     private static void Main(string[] args)
@@ -113,19 +115,37 @@ internal class Program
             Console.WriteLine("Welcome to the Fee Payment System!");
 
             // Prompt for RV status
-            bool isRV=false;
-            Console.Write("Are you driving an RV? (Y/N): ");
-            isRV = Console.ReadLine().ToUpper() == "Y";
-
-            // Prompt for the number of attendees
-            Console.Write("Enter the number of attendees: ");
-            int numberOfAttendees;
-            if (!int.TryParse(Console.ReadLine(), out numberOfAttendees) || numberOfAttendees <= 0)
+            bool isRV = false;
+            string rvp = "";
+            while (true)
             {
-                Console.WriteLine("Invalid input. Please enter a valid number of attendees.");
-                return;
+                Console.Write("Are you driving an RV? (Y/N): ");
+                rvp = Console.ReadLine().ToUpper();
+                if (rvp == "Y")
+                {
+                    isRV = true;
+                    break;
+                }
+                else if (rvp == "N")
+                {
+                    break;
+                }
+                else { Console.Write("Enter Valid Answer \n"); }
             }
 
+            // Prompt for the number of attendees
+            int numberOfAttendees;
+            while (true)
+            {
+                Console.Write("Enter the number of attendees: ");
+                numberOfAttendees = 0;
+                if (!int.TryParse(Console.ReadLine(), out numberOfAttendees) || numberOfAttendees <= 0)
+                {
+                    Console.WriteLine("Invalid input. Please enter a valid number of attendees.");
+                }
+                else
+                    break;
+            }
             double totalFee = 0;
             if (isRV)
             {
@@ -144,20 +164,24 @@ internal class Program
                 totalFee += taxAmount;
                 Console.WriteLine("You are eligible for a $5 tax fee (for 6 or more attendees).");
             }
-
+            int numberOfChildAttendees;
             // Apply child discount
             if (numberOfAttendees > 0)
             {
-                Console.Write("Enter the number of child attendees: ");
-                int numberOfChildAttendees;
-                if (int.TryParse(Console.ReadLine(), out numberOfChildAttendees) && numberOfChildAttendees >= 0 && numberOfChildAttendees <= numberOfAttendees)
+
+                while (true)
                 {
-                    childDiscount = (numberOfChildAttendees * baseFee * discountPercentage);
-                }
-                else
-                {
-                    Console.WriteLine("Invalid input. Please enter a valid number of child attendees.");
-                    return;
+                    numberOfChildAttendees = 0;
+                    Console.Write("Enter the number of child attendees: ");
+                    if (int.TryParse(Console.ReadLine(), out numberOfChildAttendees) && numberOfChildAttendees >= 0 && numberOfChildAttendees <= numberOfAttendees)
+                    {
+                        childDiscount = (numberOfChildAttendees * baseFee * discountPercentage);
+                        break;
+                    }
+                    else
+                    {
+                        Console.WriteLine("Invalid input. Please enter a valid number of child attendees.");
+                    }
                 }
             }
 
