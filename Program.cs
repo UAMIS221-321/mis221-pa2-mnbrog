@@ -11,7 +11,7 @@ internal class Program
         public string Username;
         public string Password;
         public double Change;// for user to recive change at park desk
-        public string DirectionsBack;
+        public string DirectionsBack; //reversed output from Compass()
         
     }
 
@@ -108,7 +108,7 @@ internal class Program
             Console.WriteLine();
         } // Add a newline for readability
 
-        static string Compass(int r, int l)
+        static string Compass(int r, int l)//Add ons: DirectionsBack, Add More Turns?, Menu or reset?        
         {
             int rightTurns = r;
             int leftTurns = l;
@@ -196,7 +196,7 @@ internal class Program
             return "";
         }
 
-        static double ParkFees()
+        static double ParkFees()//Add ons: Saves Chnage to profile, Rounds change to 2 decimal place
         {
             double baseFee = 10.0;
             double rvFee = 20.0;
@@ -308,7 +308,7 @@ internal class Program
             }
         }
 
-        static void SignUp(ref User[] users, ref int userCount, ref int CurrentUser, ref int newUserCount)
+        static void SignUp(ref User[] users, ref int userCount, ref int CurrentUser, ref int newUserCount)//ADD ON: Signs in user by creating new user and adding to existing User array 
         {
             Console.Write("Enter a username: ");
             string username = Console.ReadLine();
@@ -336,7 +336,7 @@ internal class Program
             }
         }
 
-        static void Login(User[] users, int userCount, ref int CurrentUser)
+        static void Login(User[] users, int userCount, ref int CurrentUser)//ADD ON: checks through current user array to sign user in
         {
             Console.Write("Enter your username: ");
             string username = Console.ReadLine();
@@ -362,7 +362,7 @@ internal class Program
             }
         }
 
-        static void SaveUserDataToFile(User[] users, int userCount, int newUserCount)
+        static void SaveUserDataToFile(User[] users, int userCount, int newUserCount)//Saves user data to local file for later use
         {
             string path = @"C:\Users\Michael Brogan\PA2\mis221-pa2-mnbrog\userdata.txt";
             using (StreamWriter sw = File.AppendText(path))
@@ -374,7 +374,7 @@ internal class Program
             }
         }
 
-        static void LoadUserDataFromFile(ref User[] users, ref int userCount, string fileName)
+        static void LoadUserDataFromFile(ref User[] users, ref int userCount, string fileName)//ADD ON: Loads the above saved data into User array
         {
             if (File.Exists(fileName))
             {
