@@ -10,7 +10,7 @@ internal class Program
     {
         public string Username;
         public string Password;
-        public double Change;// for user to recive change at park desk
+        public double Change;// for user to get change back at park desk
         public string DirectionsBack; //reversed output from Compass()
         
     }
@@ -26,18 +26,38 @@ internal class Program
 
         static void Menu(ref User[] users, ref int userCount, ref int CurrentUser, ref int newUserCount)
         {
+            while(CurrentUser==-1){
+                Console.WriteLine("Login Menu:");
+                Console.WriteLine("1. Sign Up");
+                Console.WriteLine("2. Log In");
+                Console.Write("Please select an option (1 or 2): ");
+
+                int choices = Int32.Parse(Console.ReadLine());
+                 if (choices == 1)
+                {
+                    Console.WriteLine("\nYou selected Sign Up.\n");
+                    SignUp(ref users, ref userCount, ref CurrentUser, ref newUserCount);
+                }
+                else if (choices == 2)
+                {
+                    Console.WriteLine("\nYou selected Log In.\n");
+                    Login(users, userCount, ref CurrentUser);
+                }
+                else
+                {
+                    Console.WriteLine("\nInvalid selection. Please choose a valid option (1-7).");
+                }}
             bool exit = true;
             while (exit)
             {
                 Console.WriteLine("Main Menu:");
                 Console.WriteLine("1. Compass");
                 Console.WriteLine("2. Park Fees");
-                Console.WriteLine("3. Sign Up");
-                Console.WriteLine("4. Log In");
-                Console.WriteLine("5. Change");
-                Console.WriteLine("6. Directions Back");
-                Console.WriteLine("7. Exit");
-                Console.Write("Please select an option (1, 2, 3, 4, 5, 6, or 7): ");
+                Console.WriteLine("3. Change");
+                Console.WriteLine("4. Directions Back");
+                Console.WriteLine("5. Log Out");
+                Console.WriteLine("6. Exit");
+                Console.Write("Please select an option (1-6): ");
 
                 int choice = Int32.Parse(Console.ReadLine());
                 if (choice == 1)
@@ -67,20 +87,10 @@ internal class Program
                 }
                 else if (choice == 3)
                 {
-                    Console.WriteLine("\nYou selected Sign Up.\n");
-                    SignUp(ref users, ref userCount, ref CurrentUser, ref newUserCount);
-                }
-                else if (choice == 4)
-                {
-                    Console.WriteLine("\nYou selected Log In.\n");
-                    Login(users, userCount, ref CurrentUser);
-                }
-                else if (choice == 5)
-                {
                     Console.WriteLine("\nYou selected Change.");
                     Console.WriteLine("Change: $" + Math.Round(users[CurrentUser].Change, 2) + "\n");
                 }
-                else if (choice == 6)
+                else if (choice == 4)
                 {
                     Console.WriteLine("\nYou selected Directions Back.");
                     if (CurrentUser != -1)
@@ -92,7 +102,14 @@ internal class Program
                         Console.WriteLine("\nYou need to Login or Sign Up for Directions Back.\n");
                     }
                 }
-                else if (choice == 7)
+                else if (choice == 5)
+                {
+                    Console.WriteLine("\nLogout Successful!");
+                    SaveUserDataToFile(users, userCount, newUserCount);
+                    // Exit the program
+                    break;
+                }
+                else if (choice == 6)
                 {
                     Console.WriteLine("\nGoodbye!");
                     SaveUserDataToFile(users, userCount, newUserCount);
